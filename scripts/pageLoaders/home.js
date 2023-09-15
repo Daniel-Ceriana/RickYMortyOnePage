@@ -16,7 +16,7 @@ const displayHome = () => {
             <div class="button_container">
                 <div class="button_flip">
                     <button class="frontButton" data-page="characters">CHARACTER</button>
-                    <a class="backButton" data-page="character">Find and compare your favorite character </a>
+                    <a class="backButton" data-page="characters">Find and compare your favorite character </a>
             
                 </div>
             </div>
@@ -44,7 +44,7 @@ const displayHome = () => {
 
     button.forEach((button) => {
         button.addEventListener("click", (e) => {
-            loadPage(e.target.dataset.page, displayHome())
+            loadPage(e.target.dataset.page)
         })
     })
 

@@ -11,6 +11,11 @@ header {
     padding: 0;
     padding-right: 0;
     max-width: 100%;
+    min-height: 150px;
+}
+
+.navbar-compare-characters {
+    display: none;
 }
 
 .img_logo {

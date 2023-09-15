@@ -12,7 +12,7 @@ function loadPage(page) {
             listCharacters()
             break;
         case "compare-characters":
-
+            console.log("compareCharacters")
             break;
         case "locations":
 
