@@ -7,9 +7,13 @@
     <meta name="description" content="One page de la serie Rick y Morty creada con su api">
     <meta name="keywords" content="Rick Y Morty, Serie de Rick Y Morty">
     <title>Rick Y Morty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/pageComponents/characters/character-card.css">
     <link rel="stylesheet" href="./styles/pageComponents/episodes/episodes.css">
     <link rel="stylesheet" href="./styles/components/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/pageComponents/home/home.css">
 </head>
 
 <body>
@@ -24,7 +28,7 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
                 </label>
                 <picture data-page="home" class="enlace">
-                    <img src="/multimedia/Logo.png" alt="logo" class="logo">
+                    <img src="/multimedia/Logo.png" alt="logo" class="logo change-page" data-page="home">
                 </picture>
             </div>
 
@@ -34,30 +38,30 @@
                 <div class="btn_var">
                     <ul>
                         <li class="active">
-                            <button class="navbar-button" data-page="characters" href="../index.html">CHARACTER</button>
+                            <button class="navbar-button change-page" data-page="characters">CHARACTER</button>
                         </li>
                         <li>
-                            <button class="navbar-button" data-page="locations" href="../index.html">LOCATIONS</button>
+                            <button class="navbar-button change-page" data-page="locations">LOCATIONS</button>
                         </li>
                         <li>
-                            <button class="navbar-button" data-page="episodes" href="../episodes.html">EPISODES</button>
+                            <button class="navbar-button change-page" data-page="episodes">EPISODES</button>
                         </li>
                     </ul>
                 </div>
                 <div class="paginacion">
                     <ul>
                         <li>
-                            <button class="page-link" href="#" aria-label="Previous">
+                            <button class="navbar-button page-link" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </button>
                         </li>
-                        <li><button href="#" class="active">1</button></li>
-                        <li><button href="#">2</button></li>
-                        <li><button href="#">3</button></li>
-                        <li><button href="#">4</button></li>
-                        <li><button href="#">5</button></li>
+                        <li><button class="navbar-button active">1</button></li>
+                        <li><button class="navbar-button">2</button></li>
+                        <li><button class="navbar-button">3</button></li>
+                        <li><button class="navbar-button">4</button></li>
+                        <li><button class="navbar-button">5</button></li>
                         <li>
-                            <button class="page-link" href="#" aria-label="Next">
+                            <button class="navbar-button page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </button>
                         </li>
@@ -74,9 +78,9 @@
                 </div>
 
                 <div class="minicard">
-                    <img id="1" src="../multimedia/descarga.jpg" alt="asd">
-                    <img id="2" src="../multimedia/descarga.jpg" alt="asd">
-                    <img id="3" src="../multimedia/descarga.jpg" alt="asd">
+                    <img class="change-page" id="1" data-page="compare-characters" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="asd">
+                    <img class="change-page" id="2" data-page="compare-characters" src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="asd">
+                    <img class="change-page" id="3" data-page="compare-characters" src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="asd">
                 </div>
             </div>
         </nav>
@@ -84,16 +88,14 @@
 
         <section class="menu-hamburguesa">
 
-            <button class="navbar-button" data-page="home">Home</button>
-            <button class="navbar-button" data-page="characters">Characters</button>
-            <button class="navbar-button" data-page="episodes">Episodes</button>
-            <button class="navbar-button" data-page="locations">Locations</button>
+            <button class="navbar-button change-page" data-page="home">Home</button>
+            <button class="navbar-button change-page" data-page="characters">Characters</button>
+            <button class="navbar-button change-page" data-page="locations">Locations</button>
+            <button class="navbar-button change-page" data-page="episodes">Episodes</button>
         </section>
 
 
     </header>
-    <button class="load-characters">Cargar Personajes</button>
-    <button class="load-episodes">Cargar episodes</button>
 
     <main>
 
@@ -104,6 +106,7 @@
 
     </footer>
     <script type="module" src="./scripts/app.js"></script>
+    <script src="./scripts/components/navbar/menuHamburguesa.js"></script>
     <!-- <script type="module" src="./scripts/pageLoaders/characters.js"></script> -->
 </body>
 

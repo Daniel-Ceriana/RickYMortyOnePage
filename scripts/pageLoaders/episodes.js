@@ -49,7 +49,7 @@ const listEpisodes = async(page = 1) => {
                     <br>
                 </div> 
                 <div class = "episode-card_boton active">
-                    <button class="episode-card_boton" type="button" data-url="${episode.url}" id="${episode.id}">
+                    <button class="episode-card_boton" type="button" data-url="${episode.url}" id="boton-${episode.id}">
                         +info 
                     </button> 
                 </div> 
@@ -58,14 +58,9 @@ const listEpisodes = async(page = 1) => {
         
 
             `
-
-
-
-
-
-
-
             display.appendChild(article);
+
+
         });
     } catch (error) {
         console.log("Error:" + error);
