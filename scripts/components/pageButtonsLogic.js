@@ -47,7 +47,7 @@ function loadPage(page) {
 
         default:
             turnHeaderOff()
-            document.body.style.backgroundImage = "url(/multimedia/home.jpg)";
+            document.body.style.backgroundImage = "url(./multimedia/home.jpg)";
             document.body.style.backgroundColor = "black"
             displayHome()
             break;

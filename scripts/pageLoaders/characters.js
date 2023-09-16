@@ -1,4 +1,5 @@
-import { getCharacters, getinfoWithFullLink } from "./services/getData.js";
+import { setPagination } from "../components/navbar/pagination.js";
+import { getCharacters, getCharactersWithName, getPages, getinfoWithFullLink } from "./services/getData.js";
 
 const display = document.querySelector("main");
 
@@ -6,11 +7,34 @@ const display = document.querySelector("main");
 
 
 
-const listCharacters = async(page = 1) => {
+const listCharacters = async(page = 1, busqueda = "") => {
+
+    if (!busqueda == "") {
+        console.log("buscando " + busqueda)
+
+        try {
+
+            const results = await getCharactersWithName(busqueda, page);
+            displayCharacters(results.retorno, results.pages);
+
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    } else {
+        try {
+            const { results } = await getCharacters(page);
+
+            await displayCharacters(results, await getPages("https://rickandmortyapi.com/api/character"));
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    }
 
 
+}
+
+async function displayCharacters(results, numberOfPages) {
     try {
-        const { results } = await getCharacters(page);
         let lastEpisode;
         display.textContent = "";
         await results.forEach(async character => {
@@ -22,26 +46,26 @@ const listCharacters = async(page = 1) => {
             article.setAttribute('class', 'character');
             article.innerHTML = `
 
-            <div class="grid-item">
-                <div class="tarjeta">
-                   <img src="${character.image}" class="img-fluid" alt="imagen de: ${character.name}">
-                    <div class="description">
-                        <p class="name">${character.name}</p>
-                        <p>${character.status}</p>
-                        <p>Last known location:</p>
-                        <p>${character.location.name}</p>
-                        <p>Last seen in the episode</p>
-                        <p>${episodeName}</p>
-                    </div>
+        <div class="grid-item">
+            <div class="tarjeta">
+               <img src="${character.image}" class="img-fluid" alt="imagen de: ${character.name}">
+                <div class="description">
+                    <p class="name">${character.name}</p>
+                    <p>${character.status}</p>
+                    <p>Last known location:</p>
+                    <p>${character.location.name}</p>
+                    <p>Last seen in the episode</p>
+                    <p>${episodeName}</p>
                 </div>
-                <div class="container-btnCompare">
-                    <button class="btnCompare" data-character-to-compare="${character.id}" id="compare-${character.id}">
-                        Compare Characters
-                    </button>
-                </div>
-            </div>   
+            </div>
+            <div class="container-btnCompare">
+                <button class="btnCompare" data-character-to-compare="${character.id}" id="compare-${character.id}">
+                    Compare Characters
+                </button>
+            </div>
+        </div>   
 
-            `
+        `
 
 
 
@@ -85,12 +109,13 @@ const listCharacters = async(page = 1) => {
             })
             checkIfComparing(buttonId)
         });
+        setPagination(numberOfPages)
 
     } catch (error) {
         console.log("Error:" + error);
     }
-
 }
+
 
 function checkIfComparing(buttonID) {
     const button = document.getElementById(buttonID);
