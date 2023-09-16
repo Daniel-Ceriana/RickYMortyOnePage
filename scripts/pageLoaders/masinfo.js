@@ -8,9 +8,11 @@ const characterList = async(characterInEpisode, episode) => {
     const screen = document.querySelector("main");
     screen.innerHTML = "";
 
-    const seccion = document.createElement("section");
-    screen.appendChild(seccion);
-    const subScreen = document.querySelector("section");
+    // const seccion = document.createElement("section");
+    // seccion.setAttribute("class", "info-episodes")
+    // screen.appendChild(seccion);
+    // const subScreen = document.querySelector(".info-episodes");
+    const subScreen = document.createElement("section", ".info-episodes");
 
     subScreen.setAttribute("class", "seccionPrincipal")
     screen.appendChild(subScreen);

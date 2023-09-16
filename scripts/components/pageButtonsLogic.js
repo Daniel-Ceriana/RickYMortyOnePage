@@ -4,6 +4,7 @@ import { displayHome } from "../pageLoaders/home.js";
 import { listLocations } from "../pageLoaders/locations.js";
 import { listComparisons } from "./compareCharacters.js";
 const header = document.querySelector("header")
+const searchNavbar = document.querySelector(".control")
 
 function loadPage(page) {
     switch (page) {
@@ -11,22 +12,32 @@ function loadPage(page) {
             turnHeaderOn()
             document.body.style.backgroundImage = "";
             document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
-            listCharacters()
+            listCharacters();
+            searchNavbar.dataset.paginaActual = "characters"
+            searchNavbar.style.display = "flex"
+
+
             break;
         case "compare-characters":
             listComparisons();
+            searchNavbar.style.display = "none"
             break;
         case "locations":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
             document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
             listLocations();
+            searchNavbar.dataset.paginaActual = "locations"
+            searchNavbar.style.display = "flex"
+
             break;
         case "episodes":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
             document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
             listEpisodes()
+            searchNavbar.dataset.paginaActual = "episodes"
+            searchNavbar.style.display = "flex"
             break;
         case "episode-info":
 
@@ -41,6 +52,8 @@ function loadPage(page) {
             displayHome()
             break;
     }
+    console.log(searchNavbar)
+
 }
 
 function turnHeaderOn() {

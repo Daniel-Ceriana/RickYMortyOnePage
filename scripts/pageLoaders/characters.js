@@ -8,6 +8,7 @@ const display = document.querySelector("main");
 
 const listCharacters = async(page = 1) => {
 
+
     try {
         const { results } = await getCharacters(page);
         let lastEpisode;

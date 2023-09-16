@@ -67,6 +67,8 @@ const listEpisodes = async(page = 1) => {
                 let characterInEpisode = e.target.dataset.url;
                 const results = await getinfoWithFullLink(characterInEpisode);
                 results.characters.textContent = "";
+                const searchNavbar = document.querySelector(".control")
+                searchNavbar.style.display = "none"
                 characterList(results.characters, episode.id)
             });
 
