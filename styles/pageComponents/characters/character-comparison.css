@@ -1,0 +1,42 @@
+.card-comparison {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    border-radius: 5px;
+    align-content: center;
+    justify-content: center;
+    max-width: 400px;
+}
+
+.card-comparison-visual {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-comparison-img {
+    max-width: 200px;
+}
+
+.card-comparison-name {
+    text-align: center;
+    font-size: 20px;
+}
+
+.card-comparison-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-comparison-character-description {}
+
+.card-comparison-label {
+    font-size: 17px;
+    color: rgb(78, 75, 75);
+}
+
+.card-comparison-p {
+    font-size: 20px;
+    font-weight: 500;
+}

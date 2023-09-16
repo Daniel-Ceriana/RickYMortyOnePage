@@ -1,6 +1,7 @@
 import { listCharacters } from "../pageLoaders/characters.js";
 import { listEpisodes } from "../pageLoaders/episodes.js";
 import { displayHome } from "../pageLoaders/home.js";
+import { listComparisons } from "./compareCharacters.js";
 const header = document.querySelector("header")
 
 function loadPage(page) {
@@ -12,7 +13,7 @@ function loadPage(page) {
             listCharacters()
             break;
         case "compare-characters":
-            console.log("compareCharacters")
+            listComparisons();
             break;
         case "locations":
 

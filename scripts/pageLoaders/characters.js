@@ -55,7 +55,6 @@ const listCharacters = async(page = 1) => {
             const button = document.getElementById(buttonId);
             const navbarCompareCharacters = document.querySelectorAll(".navbar-compare-characters")
             button.addEventListener("click", (e) => {
-                console.log(e.target.dataset.characterToCompare)
                 let goesIn = false
                 let index;
 
@@ -83,10 +82,8 @@ const listCharacters = async(page = 1) => {
                     navbarCompareCharacters[index].dataset.used = "true"
                 }
                 checkIfComparing(buttonId)
-                console.log(navbarCompareCharacters[0].dataset)
-                console.log(navbarCompareCharacters[1].dataset)
-                console.log(navbarCompareCharacters[2].dataset)
             })
+            checkIfComparing(buttonId)
         });
 
     } catch (error) {
@@ -116,7 +113,6 @@ async function getEpisodeInfo(lastEpisode) {
     let res;
     // console.log(lastEpisode)
     res = await getEpisodeWithFullLink(lastEpisode);
-    console.log(res.name);
     return res.name;
 }
 
