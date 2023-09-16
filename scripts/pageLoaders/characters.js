@@ -1,5 +1,4 @@
-import { loadPage } from "../components/pageButtonsLogic.js";
-import { getCharacters, getEpisodeWithFullLink } from "./services/getData.js";
+import { getCharacters, getinfoWithFullLink } from "./services/getData.js";
 
 const display = document.querySelector("main");
 
@@ -112,7 +111,7 @@ function checkIfComparing(buttonID) {
 async function getEpisodeInfo(lastEpisode) {
     let res;
     // console.log(lastEpisode)
-    res = await getEpisodeWithFullLink(lastEpisode);
+    res = await getinfoWithFullLink(lastEpisode);
     return res.name;
 }
 

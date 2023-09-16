@@ -1,4 +1,7 @@
 import { getEpisodes } from "./services/getData.js";
+import { getinfoWithFullLink } from "./services/getData.js";
+
+import { characterList } from "./masinfo.js";
 
 
 
@@ -59,7 +62,13 @@ const listEpisodes = async(page = 1) => {
 
             `
             display.appendChild(article);
-
+            const masInfoButton = document.getElementById(`boton-${episode.id}`)
+            masInfoButton.addEventListener("click", async(e) => {
+                let characterInEpisode = e.target.dataset.url;
+                const results = await getinfoWithFullLink(characterInEpisode);
+                results.characters.textContent = "";
+                characterList(results.characters, episode.id)
+            });
 
         });
     } catch (error) {

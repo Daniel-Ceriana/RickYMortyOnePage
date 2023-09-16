@@ -1,4 +1,4 @@
-import { getCharacter, getCharacters, getEpisodeWithFullLink } from "../../scripts/pageLoaders/services/getData.js";
+import { getCharacter, getCharacters, getinfoWithFullLink } from "../../scripts/pageLoaders/services/getData.js";
 const display = document.querySelector("main");
 
 const navbarCharactersToCompare = document.querySelectorAll(".navbar-compare-characters");
@@ -150,7 +150,7 @@ const listComparisons = async(page = 1) => {
 async function getEpisodeInfo(lastEpisode) {
     let res;
     // console.log(lastEpisode)
-    res = await getEpisodeWithFullLink(lastEpisode);
+    res = await getinfoWithFullLink(lastEpisode);
     return res.name;
 }
 

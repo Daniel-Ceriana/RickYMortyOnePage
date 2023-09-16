@@ -64,7 +64,7 @@ const getEpisodes = async(page) => {
         console.log("Error:" + error);
     }
 }
-const getEpisodeWithFullLink = async(url) => {
+const getinfoWithFullLink = async(url) => {
 
     try {
         const res = await fetch(`${url}`);
@@ -78,4 +78,4 @@ const getEpisodeWithFullLink = async(url) => {
 
 
 
-export { getCharacter, getCharacters, getLocation, getLocations, getEpisode, getEpisodes, getEpisodeWithFullLink };
+export { getCharacter, getCharacters, getLocation, getLocations, getEpisode, getEpisodes, getinfoWithFullLink };
