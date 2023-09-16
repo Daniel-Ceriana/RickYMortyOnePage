@@ -130,7 +130,7 @@ const listComparisons = async(page = 1) => {
                 comparedCharacter.innerHTML =
                     ` 
                 <label class="card-comparison-label" for="">Episodes shared with</label>
-                <p class="card-comparison-p" id="">${otherCharacter.otherCharacterName} ${otherCharacter.numberOfEpisodesShared}</p>
+                <p class="card-comparison-p" id="">${otherCharacter.otherCharacterName}: ${otherCharacter.numberOfEpisodesShared}</p>
                 `;
                 cardComparison.appendChild(comparedCharacter)
             })

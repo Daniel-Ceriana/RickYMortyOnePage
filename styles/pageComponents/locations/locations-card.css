@@ -1,0 +1,59 @@
+.locations-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 95vw;
+    justify-content: space-around;
+}
+
+.locations-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px black solid;
+    border-radius: 5px;
+    align-items: center;
+    padding: var(--spacing-2-8) var(--spacing-2-8) 0;
+    margin: var(--spacing-1-2);
+    gap: var(--spacing-1);
+    /* background-image: url("../media/rick-and-morty-pictures-vbopwce4a99vn8sf.jpg"); */
+    /* la imagen depende de la paleta, esa sirve de ejemplo */
+    background-size: contain;
+    width: 200px;
+    height: 250px;
+    justify-content: space-between;
+}
+
+.locations-card>img {
+    position: absolute;
+}
+
+.locations-card--description {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    text-align: center;
+    gap: var(--spacing-1);
+    justify-content: space-between;
+}
+
+.locations-card--description>h2 {
+    font-size: var(--font-h2);
+    color: black;
+}
+
+.locations-card--description>h3 {
+    font-size: var(--font-h3);
+    color: red;
+}
+
+.locations-card--description>p {
+    font-size: var(--font-p);
+}
+
+.locations-card--info {
+    display: flex;
+}
+
+.locations-card--info>button {
+    padding: 0 var(--spacing-1-8) 0 var(--spacing-1-8);
+}

@@ -1,6 +1,7 @@
 import { listCharacters } from "../pageLoaders/characters.js";
 import { listEpisodes } from "../pageLoaders/episodes.js";
 import { displayHome } from "../pageLoaders/home.js";
+import { listLocations } from "../pageLoaders/locations.js";
 import { listComparisons } from "./compareCharacters.js";
 const header = document.querySelector("header")
 
@@ -16,7 +17,10 @@ function loadPage(page) {
             listComparisons();
             break;
         case "locations":
-
+            turnHeaderOn()
+            document.body.style.backgroundImage = "";
+            document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
+            listLocations();
             break;
         case "episodes":
             turnHeaderOn()
