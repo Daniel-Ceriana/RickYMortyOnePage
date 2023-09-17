@@ -16,15 +16,16 @@ const listCharacters = async(page = 1, busqueda = "") => {
 
             const results = await getCharactersWithName(busqueda, page);
             displayCharacters(results.retorno, results.pages);
-
+            return results.pages
         } catch (error) {
             console.log("Error:" + error);
         }
     } else {
         try {
             const { results } = await getCharacters(page);
-
-            await displayCharacters(results, await getPages("https://rickandmortyapi.com/api/character"));
+            const numberOfPages = await getPages("https://rickandmortyapi.com/api/character")
+            await displayCharacters(results, numberOfPages);
+            return numberOfPages
         } catch (error) {
             console.log("Error:" + error);
         }
@@ -103,13 +104,14 @@ async function displayCharacters(results, numberOfPages) {
                     navbarCompareCharacters[index].style.display = "flex"
                     navbarCompareCharacters[index].src = character.image
                     navbarCompareCharacters[index].dataset.characterToCompare = character.id
+                    navbarCompareCharacters[index].alt = "imagen de: " + character.name;
                     navbarCompareCharacters[index].dataset.used = "true"
                 }
                 checkIfComparing(buttonId)
             })
             checkIfComparing(buttonId)
         });
-        setPagination(numberOfPages)
+        // setPagination(numberOfPages)
 
     } catch (error) {
         console.log("Error:" + error);

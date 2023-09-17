@@ -3,16 +3,17 @@ import { listEpisodes } from "../pageLoaders/episodes.js";
 import { displayHome } from "../pageLoaders/home.js";
 import { listLocations } from "../pageLoaders/locations.js";
 import { listComparisons } from "./compareCharacters.js";
+import { setPagination } from "./navbar/pagination.js";
 const header = document.querySelector("header")
 const searchNavbar = document.querySelector(".control")
 
-function loadPage(page) {
+async function loadPage(page, pageNumber = 1) {
     switch (page) {
         case "characters":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
             document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
-            listCharacters();
+            setPagination(await listCharacters(pageNumber, searchNavbar.value), pageNumber);
             searchNavbar.dataset.paginaActual = "characters"
             searchNavbar.style.display = "flex"
 
