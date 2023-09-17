@@ -4,12 +4,15 @@ import { loadPage } from "../pageButtonsLogic.js";
 const paginationbuttons = document.querySelectorAll(".pagination-button");
 const goLeftButton = document.querySelector(".left-button");
 const goRightButton = document.querySelector(".right-button");
+let _currentPage = 1;
+let _numberOfPages;
 paginationbuttons.forEach(button => {
     button.addEventListener("click", (e) => {
         const searchInfo = document.querySelector(".control")
         switch (searchInfo.dataset.paginaActual) {
             case "characters":
                 console.log(e.target.textContent)
+                _currentPage = e.target.textContent
                 loadPage("characters", e.target.textContent)
 
                 break;
@@ -28,15 +31,37 @@ paginationbuttons.forEach(button => {
 })
 goRightButton.addEventListener("click", () => {
     const searchInfo = document.querySelector(".control")
-    switch (searchInfo.dataset.paginaActual) {
+    console.log(_currentPage)
+    if (_currentPage < _numberOfPages) {
+        _currentPage++;
+    } else {
+
+    }
+
+    paginationSides(searchInfo.dataset.paginaActual);
+
+})
+goLeftButton.addEventListener("click", () => {
+    const searchInfo = document.querySelector(".control")
+    if (_currentPage > 0) {
+        _currentPage--;
+    } else {
+
+    }
+    paginationSides(searchInfo.dataset.paginaActual);
+
+})
+
+function paginationSides(page) {
+    switch (page) {
         case "characters":
-            console.log(e.target.textContent)
-            loadPage("characters", e.target.textContent + 1)
+
+            loadPage("characters", _currentPage)
 
             break;
         case "episodes":
             // listCharacters(currentPage, searchInfo.value)
-            console.log("Episodes, pagina:" + currentPage)
+            console.log("Episodes, pagina:" + _currentPage)
             break;
         case "locations":
             // listCharacters(currentPage, searchInfo.value)
@@ -45,10 +70,11 @@ goRightButton.addEventListener("click", () => {
         default:
             break;
     }
-})
+}
 
 function setPagination(numberOfPages, currentPage = 1) {
-
+    _currentPage = currentPage;
+    _numberOfPages = numberOfPages;
 
 
 

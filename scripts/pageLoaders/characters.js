@@ -36,6 +36,17 @@ const listCharacters = async(page = 1, busqueda = "") => {
 
 async function displayCharacters(results, numberOfPages) {
     try {
+        const displayContainer = document.querySelector("main");
+        displayContainer.textContent = "";
+
+        const separador = document.createElement("div")
+        displayContainer.appendChild(separador);
+        separador.setAttribute("class", "separador")
+
+        const cardsCharacter = document.createElement("section");
+        cardsCharacter.setAttribute("class", "characters-container")
+        displayContainer.appendChild(cardsCharacter);
+        //nuevo
         let lastEpisode;
         display.textContent = "";
         await results.forEach(async character => {
