@@ -1,7 +1,7 @@
 import { setPagination } from "../components/navbar/pagination.js";
 import { getCharacters, getCharactersWithName, getPages, getinfoWithFullLink } from "./services/getData.js";
 
-const display = document.querySelector("main");
+
 
 
 
@@ -46,7 +46,8 @@ async function displayCharacters(results, numberOfPages) {
         const cardsCharacter = document.createElement("section");
         cardsCharacter.setAttribute("class", "characters-container")
         displayContainer.appendChild(cardsCharacter);
-        //nuevo
+        const display = document.querySelector(".characters-container")
+            //nuevo
         let lastEpisode;
         display.textContent = "";
         await results.forEach(async character => {
