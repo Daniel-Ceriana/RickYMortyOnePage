@@ -1,4 +1,4 @@
-import { getEpisodes } from "./services/getData.js";
+import { getEpisodes, getEpisodesWithName, getPages } from "./services/getData.js";
 import { getinfoWithFullLink } from "./services/getData.js";
 
 import { characterList } from "./masinfo.js";
@@ -7,7 +7,36 @@ import { characterList } from "./masinfo.js";
 
 
 
-const listEpisodes = async(page = 1) => {
+const listEpisodes = async(page = 1, busqueda = "") => {
+
+    if (!busqueda == "") {
+
+        try {
+
+            const results = await getEpisodesWithName(busqueda, page);
+            displayEpisodes(results.retorno, results.pages);
+            return results.pages
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    } else {
+        try {
+            const { results } = await getEpisodes(page);
+            const numberOfPages = await getPages("https://rickandmortyapi.com/api/episode")
+            await displayEpisodes(results, numberOfPages);
+            return numberOfPages
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    }
+
+
+
+}
+
+async function displayEpisodes(results) {
+
+
     const displayContainer = document.querySelector("main");
     const container = document.createElement('section')
     container.setAttribute('class', 'episodes-container');
@@ -15,27 +44,10 @@ const listEpisodes = async(page = 1) => {
     displayContainer.innerHTML = "";
 
     displayContainer.appendChild(container)
-
-
-
     const display = document.querySelector(".episodes-container");
 
 
-
     try {
-        const { results } = await getEpisodes(page);
-
-        // results[0].characters.forEach(character => {
-        //     console.log(character)
-        //     const characterInfo = getCharacter(character)
-
-        //     `
-        //    <h1>Nombre: ${characterInfo.name} </h1>
-        //    <h1>foto: ${characterInfo.image} </h1>
-        //    `
-
-        // });
-
         display.textContent = "";
         await results.forEach(async episode => {
             const article = document.createElement('article');
@@ -76,7 +88,6 @@ const listEpisodes = async(page = 1) => {
     } catch (error) {
         console.log("Error:" + error);
     }
-
 }
 
 

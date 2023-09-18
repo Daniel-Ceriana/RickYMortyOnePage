@@ -10,7 +10,6 @@ import { getCharacters, getCharactersWithName, getPages, getinfoWithFullLink } f
 const listCharacters = async(page = 1, busqueda = "") => {
 
     if (!busqueda == "") {
-        console.log("buscando " + busqueda)
 
         try {
 

@@ -53,7 +53,8 @@ async function loadPage(page, pageNumber = 1) {
             turnHeaderOn()
             document.body.style.backgroundImage = "";
             document.body.style.background = "#97ce4c";
-            listEpisodes()
+            // listEpisodes()
+            setPagination(await listEpisodes(pageNumber, searchNavbar.value), pageNumber);
             searchNavbar.dataset.paginaActual = "episodes"
             searchNavbar.style.display = "flex"
             paginationNavbar.style.display = "flex"
