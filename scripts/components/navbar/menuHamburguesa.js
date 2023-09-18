@@ -11,9 +11,7 @@ check.addEventListener("click", (e) => {
     }
 })
 window.addEventListener("resize", (e) => {
-    console.log(window.screen.width)
     if (window.screen.width >= 952) {
-        console.log("ASDASD")
         menuHamburguesa.style.display = "none";
         check.checked = false
     }

@@ -5,8 +5,14 @@ import { getinfoWithFullLink, getEpisode } from "./services/getData.js";
 
 
 const characterList = async(characterInEpisode, episode) => {
+    const paginationNavbar = document.querySelector(".paginacion")
+
+    paginationNavbar.style.display = "none"
+
     const screen = document.querySelector("main");
     screen.innerHTML = "";
+
+
 
     const separador = document.createElement("div")
     separador.setAttribute("class", "separador")

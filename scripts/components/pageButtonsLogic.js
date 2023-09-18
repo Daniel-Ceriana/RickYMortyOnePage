@@ -39,10 +39,10 @@ async function loadPage(page, pageNumber = 1) {
         case "locations":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
-
             document.body.style.background = "#97ce4c";
+            // listLocations();
+            setPagination(await listLocations(pageNumber, searchNavbar.value), pageNumber);
 
-            listLocations();
             searchNavbar.dataset.paginaActual = "locations"
             searchNavbar.style.display = "flex"
             paginationNavbar.style.display = "flex"
@@ -52,9 +52,7 @@ async function loadPage(page, pageNumber = 1) {
         case "episodes":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
-
             document.body.style.background = "#97ce4c";
-
             listEpisodes()
             searchNavbar.dataset.paginaActual = "episodes"
             searchNavbar.style.display = "flex"
@@ -74,7 +72,6 @@ async function loadPage(page, pageNumber = 1) {
             displayHome()
             break;
     }
-    console.log(searchNavbar)
 
 }
 

@@ -30,61 +30,54 @@ const getPages = async(url) => {
     }
 
 }
-const getCharactersWithName = async(name, page = 1) => {
-        const searchedCharacters = [];
-        try {
-            const res = await fetch(`${apiUrl}/character`);
-            const data = await res.json();
-            let start = 0;
-            if (page > 1) {
-                start = 20 * page - 20
-            }
-            let finish = 20 * page;
-            let pages = 0;
-            let totalPages;
-
-            for (let i = 1; i <= data.info.pages; i++) {
-                const pageRes = await getCharacters(i)
-                pageRes.results.forEach(character => {
-                    if (character.name.toLowerCase().search(name.toLowerCase()) >= 0) {
-                        searchedCharacters.push(character)
-                        pages++
-                    }
-                });
-            }
-            console.log(start, finish)
-            totalPages = Math.ceil(pages /= 20)
-
-            const retorno = []
-            for (start; start < finish; start++) {
-                if (searchedCharacters[start] != null) {
-                    retorno.push(searchedCharacters[start])
-                } else {
-                    break;
-                }
-            }
-            return { "pages": totalPages, retorno };
-        } catch (error) {
-            console.log("Error:" + error);
+const getSomethingWithName = async(something, callback, name, page = 1) => {
+    const searchedCharacters = [];
+    try {
+        const res = await fetch(`${apiUrl}/${something}`);
+        const data = await res.json();
+        let start = 0;
+        if (page > 1) {
+            start = 20 * page - 20
         }
+        let finish = 20 * page;
+        let pages = 0;
+        let totalPages;
 
+        for (let i = 1; i <= data.info.pages; i++) {
+            const pageRes = await callback(i)
+            pageRes.results.forEach(character => {
+                if (character.name.toLowerCase().search(name.toLowerCase()) >= 0) {
+                    searchedCharacters.push(character)
+                    pages++
+                }
+            });
+        }
+        totalPages = Math.ceil(pages /= 20)
+
+        const retorno = []
+        for (start; start < finish; start++) {
+            if (searchedCharacters[start] != null) {
+                retorno.push(searchedCharacters[start])
+            } else {
+                break;
+            }
+        }
+        return { "pages": totalPages, retorno };
+    } catch (error) {
+        console.log("Error:" + error);
     }
-    // const getNumberOfCharactersWithName = async(name) => {
-    //         const res = await getCharactersWithName("rick")
-    //         console.log(res.length)
-    //     }
-    //     getNumberOfCharactersWithName()
 
-// const getNumberOfCharactersWithNameAndPage = async(name, page = 1) => {
-//     const characters = getNumberOfCharactersWithName(name)
-//     let res;
-//     if (!characters > 20) {
-//         res = getCharactersWithName(name)
-//     } else {
+}
+const getCharactersWithName = async(name, page = 1) => {
+    return await getSomethingWithName("character", getCharacters, name, page)
+}
+const getEpisodesWithName = async(name, page = 1) => {
+    return await getSomethingWithName("episode", getEpisodes, name, page)
+}
+const getLocationsWithName = async(name, page = 1) => {
+    return await getSomethingWithName("location", getLocations, name, page)
+}
 
-//     }
-
-// }
 
 
 const getLocation = async(id) => {
@@ -145,4 +138,4 @@ const getinfoWithFullLink = async(url) => {
 
 
 
-export { getCharacter, getCharacters, getLocation, getLocations, getEpisode, getEpisodes, getinfoWithFullLink, getCharactersWithName, getPages };
+export { getCharacter, getCharacters, getLocation, getLocations, getEpisode, getEpisodes, getinfoWithFullLink, getCharactersWithName, getPages, getEpisodesWithName, getLocationsWithName };

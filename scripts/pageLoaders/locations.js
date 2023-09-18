@@ -1,15 +1,51 @@
-import { getLocations } from "./services/getData.js";
+import { getLocations, getLocationsWithName, getPages } from "./services/getData.js";
 
 const display = document.querySelector("main")
 
-const listLocations = async(page = 1) => {
+const listLocations = async(page = 1, busqueda = "") => {
+
+
+
+    if (!busqueda == "") {
+        console.log("buscando " + busqueda)
+
+        try {
+
+            const results = await getLocationsWithName(busqueda, page);
+            displayLocations(results.retorno, results.pages);
+            console.log(results.retorno)
+            return results.pages
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    } else {
+        try {
+            const { results } = await getLocations(page);
+            const numberOfPages = await getPages("https://rickandmortyapi.com/api/location")
+            await displayLocations(results, numberOfPages);
+            return numberOfPages
+        } catch (error) {
+            console.log("Error:" + error);
+        }
+    }
+
+
+
+
+
+
+
+}
+
+
+
+async function displayLocations(results) {
 
     const displayContainer = document.createElement('section');
     displayContainer.setAttribute("class", "locations-container");
 
 
     try {
-        const { results } = await getLocations(page);
         display.textContent = "";
         results.forEach(location => {
             const article = document.createElement('article');

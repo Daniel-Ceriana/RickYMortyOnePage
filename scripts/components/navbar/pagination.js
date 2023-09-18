@@ -1,4 +1,3 @@
-import { listCharacters } from "../../pageLoaders/characters.js";
 import { loadPage } from "../pageButtonsLogic.js";
 
 const paginationbuttons = document.querySelectorAll(".pagination-button");
@@ -9,20 +8,16 @@ let _numberOfPages;
 paginationbuttons.forEach(button => {
     button.addEventListener("click", (e) => {
         const searchInfo = document.querySelector(".control")
+        _currentPage = e.target.textContent
         switch (searchInfo.dataset.paginaActual) {
             case "characters":
-                console.log(e.target.textContent)
-                _currentPage = e.target.textContent
                 loadPage("characters", e.target.textContent)
-
                 break;
             case "episodes":
-                // listCharacters(currentPage, searchInfo.value)
-                console.log("Episodes, pagina:" + currentPage)
+                loadPage("episodes", e.target.textContent)
                 break;
             case "locations":
-                // listCharacters(currentPage, searchInfo.value)
-
+                loadPage("locations", e.target.textContent)
                 break;
             default:
                 break;
@@ -31,7 +26,6 @@ paginationbuttons.forEach(button => {
 })
 goRightButton.addEventListener("click", () => {
     const searchInfo = document.querySelector(".control")
-    console.log(_currentPage)
     if (_currentPage < _numberOfPages) {
         _currentPage++;
     } else {
@@ -55,19 +49,16 @@ goLeftButton.addEventListener("click", () => {
 function paginationSides(page) {
     switch (page) {
         case "characters":
-
             loadPage("characters", _currentPage)
-
             break;
         case "episodes":
-            // listCharacters(currentPage, searchInfo.value)
-            console.log("Episodes, pagina:" + _currentPage)
+            loadPage("episodes", _currentPage)
             break;
         case "locations":
-            // listCharacters(currentPage, searchInfo.value)
-
+            loadPage("locations", _currentPage)
             break;
         default:
+            loadPage("home")
             break;
     }
 }
@@ -77,16 +68,13 @@ function setPagination(numberOfPages, currentPage = 1) {
     _numberOfPages = numberOfPages;
 
 
-
+    //setea la primer y ultima pagina
     paginationbuttons[paginationbuttons.length - 1].textContent = numberOfPages
     paginationbuttons[0].textContent = 1
 
 
-    // const arr = [1, 2, 3, 4, 42];
-    // console.log(arr)
     // En caso de que haya muchas paginas
     if (_numberOfPages > 5) {
-        console.log(_numberOfPages)
         for (let i = 0; i < paginationbuttons.length; i++) {
             paginationbuttons[i].style.display = "flex"
 
@@ -107,6 +95,7 @@ function setPagination(numberOfPages, currentPage = 1) {
 
         }
     } else {
+        //en caso de que hayan menos de 5 paginas, va eliminando los botones sobrantes
         for (let i = paginationbuttons.length - 1; i > 0; i--) {
             if (i >= _numberOfPages) {
 
@@ -118,9 +107,7 @@ function setPagination(numberOfPages, currentPage = 1) {
             }
         }
     }
-    console.log(_numberOfPages)
 
-    console.log(_currentPage)
 
 }
 
