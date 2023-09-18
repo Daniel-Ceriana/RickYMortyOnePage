@@ -1,4 +1,5 @@
 .locations-container {
+    margin: 0 auto;
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;

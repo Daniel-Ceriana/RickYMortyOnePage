@@ -84,11 +84,71 @@ function setPagination(numberOfPages, currentPage = 1) {
             paginationbuttons[2].textContent = _currentPage + 2
             paginationbuttons[3].textContent = _currentPage + 3
 
+
+            paginationbuttons[0].setAttribute("class", "navbar-button")
+            paginationbuttons[0].setAttribute("class", "pagActual")
+            paginationbuttons[1].removeAttribute("class", "pagActual")
+            paginationbuttons[1].setAttribute("class", "navbar-button")
+            paginationbuttons[2].removeAttribute("class", "pagActual")
+            paginationbuttons[3].removeAttribute("class", "pagActual")
+            paginationbuttons[4].removeAttribute("class", "pagActual")
+            paginationbuttons[2].setAttribute("class", "navbar-button")
+            paginationbuttons[3].setAttribute("class", "navbar-button")
+            paginationbuttons[4].setAttribute("class", "navbar-button")
+
+
+        } else if (_currentPage == 2) {
+
+            paginationbuttons[1].setAttribute("class", "navbar-button")
+            paginationbuttons[1].setAttribute("class", "pagActual")
+            paginationbuttons[0].removeAttribute("class", "pagActual")
+            paginationbuttons[0].setAttribute("class", "navbar-button")
+            paginationbuttons[2].removeAttribute("class", "pagActual")
+            paginationbuttons[3].removeAttribute("class", "pagActual")
+            paginationbuttons[4].removeAttribute("class", "pagActual")
+            paginationbuttons[2].setAttribute("class", "navbar-button")
+            paginationbuttons[3].setAttribute("class", "navbar-button")
+            paginationbuttons[4].setAttribute("class", "navbar-button")
+
+
         } else if (_currentPage >= 3 && _currentPage < numberOfPages - 1) {
             paginationbuttons[1].textContent = _currentPage - 1
             paginationbuttons[2].textContent = _currentPage
+            console.log(paginationbuttons[2].attributes)
+
+            paginationbuttons[0].removeAttribute("class", "pagActual")
+            paginationbuttons[0].setAttribute("class", "navbar-button")
+            paginationbuttons[1].removeAttribute("class", "pagActual")
+            paginationbuttons[1].setAttribute("class", "navbar-button")
+            paginationbuttons[2].setAttribute("class", "navbar-button")
+            paginationbuttons[2].setAttribute("class", "pagActual")
+            paginationbuttons[3].removeAttribute("class", "pagActual")
+            paginationbuttons[4].removeAttribute("class", "pagActual")
+            paginationbuttons[3].setAttribute("class", "navbar-button")
+            paginationbuttons[4].setAttribute("class", "navbar-button")
             paginationbuttons[3].textContent = _currentPage + 1
+        } else if (_currentPage == numberOfPages - 1) {
+            paginationbuttons[3].setAttribute("class", "navbar-button")
+            paginationbuttons[3].setAttribute("class", "pagActual")
+            paginationbuttons[0].removeAttribute("class", "pagActual")
+            paginationbuttons[0].setAttribute("class", "navbar-button")
+            paginationbuttons[2].removeAttribute("class", "pagActual")
+            paginationbuttons[1].removeAttribute("class", "pagActual")
+            paginationbuttons[4].removeAttribute("class", "pagActual")
+            paginationbuttons[2].setAttribute("class", "navbar-button")
+            paginationbuttons[1].setAttribute("class", "navbar-button")
+            paginationbuttons[4].setAttribute("class", "navbar-button")
         } else if (_currentPage == numberOfPages) {
+            paginationbuttons[4].setAttribute("class", "navbar-button")
+            paginationbuttons[4].setAttribute("class", "pagActual")
+            paginationbuttons[0].removeAttribute("class", "pagActual")
+            paginationbuttons[0].setAttribute("class", "navbar-button")
+            paginationbuttons[2].removeAttribute("class", "pagActual")
+            paginationbuttons[1].removeAttribute("class", "pagActual")
+            paginationbuttons[3].removeAttribute("class", "pagActual")
+            paginationbuttons[2].setAttribute("class", "navbar-button")
+            paginationbuttons[1].setAttribute("class", "navbar-button")
+            paginationbuttons[3].setAttribute("class", "navbar-button")
             paginationbuttons[1].textContent = numberOfPages - 3
             paginationbuttons[2].textContent = _currentPage - 2
             paginationbuttons[3].textContent = _currentPage - 1

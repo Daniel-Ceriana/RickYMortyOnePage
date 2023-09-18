@@ -135,6 +135,15 @@ nav ul li {
     display: none;
 }
 
+.pagActual {
+    color: #39ff14;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 2px solid #39ff14;
+    background-color: #e89ac7;
+}
+
 @media (max-width: 952px) {
     .enlace {
         padding-left: 0;
