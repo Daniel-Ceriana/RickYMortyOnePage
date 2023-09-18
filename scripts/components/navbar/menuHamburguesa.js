@@ -11,10 +11,8 @@ check.addEventListener("click", (e) => {
     }
 })
 window.addEventListener("resize", (e) => {
-    if (window.screen.width >= 952) {
-        menuHamburguesa.style.display = "none";
-        check.checked = false
-    }
+    menuHamburguesa.style.display = "none";
+    check.checked = false
 })
 
 
