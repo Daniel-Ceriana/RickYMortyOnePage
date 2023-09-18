@@ -81,7 +81,6 @@ const listComparisons = async(page = 1) => {
 
     try {
         const results = await compareCharacter()
-        console.log(results);
         let lastEpisode;
         display.textContent = "";
         const sectionCompare = document.createElement("section")
@@ -90,7 +89,6 @@ const listComparisons = async(page = 1) => {
 
         results.forEach(async character => {
             const article = document.createElement('article');
-            console.log(character)
             lastEpisode = character.episode[character.episode.length - 1]
             let episodeName = await getEpisodeInfo(lastEpisode);
 
