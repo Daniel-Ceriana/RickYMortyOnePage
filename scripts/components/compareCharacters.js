@@ -84,6 +84,10 @@ const listComparisons = async(page = 1) => {
         console.log(results);
         let lastEpisode;
         display.textContent = "";
+        const sectionCompare = document.createElement("section")
+        sectionCompare.setAttribute("class", "sectionCompare")
+        display.appendChild(sectionCompare);
+
         results.forEach(async character => {
             const article = document.createElement('article');
             console.log(character)
@@ -123,7 +127,7 @@ const listComparisons = async(page = 1) => {
 
 
 
-            display.appendChild(article);
+            sectionCompare.appendChild(article);
             const cardComparison = document.getElementById(`compare-section-${character.id}`)
             character.otherCharacters.forEach(otherCharacter => {
                 const comparedCharacter = document.createElement('article')

@@ -1,11 +1,22 @@
+.sectionCompare {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color: #97ce4c;
+}
+
 .card-comparison {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    border: 2px solid black;
     border-radius: 5px;
     align-content: center;
     justify-content: center;
     max-width: 400px;
+    background-color: #e4a788;
 }
 
 .card-comparison-visual {
@@ -20,7 +31,8 @@
 
 .card-comparison-name {
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
+    color: #f0e14a;
 }
 
 .card-comparison-info {
@@ -29,7 +41,10 @@
     gap: 10px;
 }
 
-.card-comparison-character-description {}
+.card-comparison-character-description {
+    text-align: center;
+    color: white;
+}
 
 .card-comparison-label {
     font-size: 17px;

@@ -1,4 +1,5 @@
 .locations-container {
+    padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -15,11 +16,12 @@
     padding: var(--spacing-2-8) var(--spacing-2-8) 0;
     margin: var(--spacing-1-2);
     gap: var(--spacing-1);
-    /* background-image: url("../media/rick-and-morty-pictures-vbopwce4a99vn8sf.jpg"); */
+    /* background-image: url(../../../multimedia/cardsEpisodes.png); */
     /* la imagen depende de la paleta, esa sirve de ejemplo */
+    background-color: #e89ac7;
     background-size: contain;
-    width: 200px;
-    height: 250px;
+    width: 350px;
+    height: 300px;
     justify-content: space-between;
 }
 
@@ -37,7 +39,7 @@
 }
 
 .locations-card--description>h2 {
-    font-size: var(--font-h2);
+    font-size: 35px;
     color: black;
 }
 
@@ -47,13 +49,6 @@
 }
 
 .locations-card--description>p {
-    font-size: var(--font-p);
-}
-
-.locations-card--info {
-    display: flex;
-}
-
-.locations-card--info>button {
-    padding: 0 var(--spacing-1-8) 0 var(--spacing-1-8);
+    font-size: 18px;
+    color: white;
 }
