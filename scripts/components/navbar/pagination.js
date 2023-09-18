@@ -43,7 +43,7 @@ goRightButton.addEventListener("click", () => {
 })
 goLeftButton.addEventListener("click", () => {
     const searchInfo = document.querySelector(".control")
-    if (_currentPage > 0) {
+    if (_currentPage > 1) {
         _currentPage--;
     } else {
 
@@ -73,7 +73,7 @@ function paginationSides(page) {
 }
 
 function setPagination(numberOfPages, currentPage = 1) {
-    _currentPage = currentPage;
+    _currentPage = Number(currentPage);
     _numberOfPages = numberOfPages;
 
 
@@ -82,39 +82,47 @@ function setPagination(numberOfPages, currentPage = 1) {
     paginationbuttons[0].textContent = 1
 
 
-    const arr = [1, 2, 3, 4, 42];
+    // const arr = [1, 2, 3, 4, 42];
     // console.log(arr)
+    // En caso de que haya muchas paginas
+    if (_numberOfPages > 5) {
+        console.log(_numberOfPages)
+        for (let i = 0; i < paginationbuttons.length; i++) {
+            paginationbuttons[i].style.display = "flex"
 
+        }
+        if (_currentPage == 1) {
+            paginationbuttons[1].textContent = 2
+            paginationbuttons[2].textContent = _currentPage + 2
+            paginationbuttons[3].textContent = _currentPage + 3
 
-    if (paginationbuttons.textContent > 5) {
-        paginationbuttons[2].textContent = currentPage
-        paginationbuttons[1].textContent = currentPage - 1
-        paginationbuttons[3].textContent = currentPage + 1
+        } else if (_currentPage >= 3 && _currentPage < numberOfPages - 1) {
+            paginationbuttons[1].textContent = _currentPage - 1
+            paginationbuttons[2].textContent = _currentPage
+            paginationbuttons[3].textContent = _currentPage + 1
+        } else if (_currentPage == numberOfPages) {
+            paginationbuttons[1].textContent = numberOfPages - 3
+            paginationbuttons[2].textContent = _currentPage - 2
+            paginationbuttons[3].textContent = _currentPage - 1
+
+        }
+    } else {
+        for (let i = paginationbuttons.length - 1; i > 0; i--) {
+            if (i >= _numberOfPages) {
+
+                paginationbuttons[i].style.display = "none"
+            } else {
+
+                paginationbuttons[i].style.display = "flex"
+
+            }
+        }
     }
+    console.log(_numberOfPages)
 
-
-
-    // for (let i = 0; i < paginationbuttons.length; i++) {
-
-    //     if (paginationbuttons[i] === paginationbuttons[0] || paginationbuttons[i] === paginationbuttons[4]) {
-
-    //     } else {
-    //         paginationbuttons[i].textContent++;
-    //     }
-    // }
-    // console.log(arr)
-
-
-    // if (currentPage >= 5 && currentPage <= numberOfPages - 4) {
-    //     paginationbuttons[1].textContent = "..."
-    //     paginationbuttons[3].textContent = "..."
-    //     console.log(paginationbuttons[1].textContent)
-    // }
+    console.log(_currentPage)
 
 }
 
-function updatePagination() {
-
-}
 
 export { setPagination }

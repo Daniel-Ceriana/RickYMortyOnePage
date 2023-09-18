@@ -6,39 +6,60 @@ import { listComparisons } from "./compareCharacters.js";
 import { setPagination } from "./navbar/pagination.js";
 const header = document.querySelector("header")
 const searchNavbar = document.querySelector(".control")
+const paginationNavbar = document.querySelector(".paginacion")
+
+
+
+searchNavbar.addEventListener("keyup", (e) => {
+
+    loadPage(searchNavbar.dataset.paginaActual)
+        // loadPage()
+})
 
 async function loadPage(page, pageNumber = 1) {
     switch (page) {
         case "characters":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
-            document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
+            // document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
+            document.body.style.background = "#97ce4c";
             setPagination(await listCharacters(pageNumber, searchNavbar.value), pageNumber);
             searchNavbar.dataset.paginaActual = "characters"
             searchNavbar.style.display = "flex"
+            paginationNavbar.style.display = "flex"
 
 
             break;
         case "compare-characters":
             listComparisons();
             searchNavbar.style.display = "none"
+            paginationNavbar.style.display = "none"
+
             break;
         case "locations":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
-            document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
+
+            document.body.style.background = "#97ce4c";
+
             listLocations();
             searchNavbar.dataset.paginaActual = "locations"
             searchNavbar.style.display = "flex"
+            paginationNavbar.style.display = "flex"
+
 
             break;
         case "episodes":
             turnHeaderOn()
             document.body.style.backgroundImage = "";
-            document.body.style.background = "linear-gradient(#97ce4c, #e89ac7)";
+
+            document.body.style.background = "#97ce4c";
+
             listEpisodes()
             searchNavbar.dataset.paginaActual = "episodes"
             searchNavbar.style.display = "flex"
+            paginationNavbar.style.display = "flex"
+
             break;
         case "episode-info":
 

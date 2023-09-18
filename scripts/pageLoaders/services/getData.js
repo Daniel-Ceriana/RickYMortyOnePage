@@ -30,7 +30,7 @@ const getPages = async(url) => {
     }
 
 }
-const getCharactersWithName = async(name, page = 2) => {
+const getCharactersWithName = async(name, page = 1) => {
         const searchedCharacters = [];
         try {
             const res = await fetch(`${apiUrl}/character`);
