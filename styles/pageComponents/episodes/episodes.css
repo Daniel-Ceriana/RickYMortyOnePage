@@ -19,8 +19,9 @@
     margin: 0;
     background-size: cover;
     border-radius: 6px;
-    border: #39ff14 solid 5px;
-    background-image: url(../multimedia/633234.jpg);
+    border: black solid 5px;
+    background-image: url(../../../multimedia/episodes-background.png);
+    /* opacity: 0.5; */
 }
 
 .episode-card_cuerpo {
@@ -39,7 +40,7 @@
     font-size: 25px;
 }
 
-span {
+.episode-card-date {
     font-size: 20px;
 }
 

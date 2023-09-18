@@ -58,7 +58,7 @@ async function displayEpisodes(results) {
                 <div class = "episode-card_cuerpo" >
                     <h2> ${episode.name} </h2> 
                     <br>
-                    <p> <span style = "color: gray;" > ${episode.air_date} </span></p>
+                    <p class="episode-card-date"> ${episode.air_date}</p>
                     <br>
                     <h3> ${episode.episode} </h3>
                     <br>
