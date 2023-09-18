@@ -23,7 +23,7 @@ async function compareCharacter() {
 
 
         const comparedArray = [];
-        console.log(mainCharacter)
+
         characterArray.forEach(secondaryCharacter => {
 
             if (mainCharacter.name != secondaryCharacter.name) {

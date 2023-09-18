@@ -12,7 +12,7 @@ const listLocations = async(page = 1, busqueda = "") => {
 
             const results = await getLocationsWithName(busqueda, page);
             displayLocations(results.retorno, results.pages);
-            console.log(results.retorno)
+
             return results.pages
         } catch (error) {
             console.log("Error:" + error);

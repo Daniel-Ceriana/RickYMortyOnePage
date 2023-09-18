@@ -60,8 +60,8 @@ const characterList = async(characterInEpisode, episode) => {
         display1.textContent = "";
         const article = document.createElement('div');
         const result = await getEpisode(episode);
-        console.log(result)
-            //console.log(character)
+
+        //console.log(character)
 
         article.setAttribute('class', 'episode');
 

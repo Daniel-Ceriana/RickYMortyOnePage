@@ -114,7 +114,7 @@ function setPagination(numberOfPages, currentPage = 1) {
         } else if (_currentPage >= 3 && _currentPage < numberOfPages - 1) {
             paginationbuttons[1].textContent = _currentPage - 1
             paginationbuttons[2].textContent = _currentPage
-            console.log(paginationbuttons[2].attributes)
+
 
             paginationbuttons[0].removeAttribute("class", "pagActual")
             paginationbuttons[0].setAttribute("class", "navbar-button")
